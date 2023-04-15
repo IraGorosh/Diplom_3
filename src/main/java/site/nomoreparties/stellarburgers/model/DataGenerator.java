@@ -11,7 +11,8 @@ public class DataGenerator {
 
     public static String getEmailDomain() {
         Random random = new Random();
-        final String[] domain = {"gmail.com",
+        final String[] domain = {
+                "gmail.com",
                 "yandex.ru",
                 "yahoo.com",
                 "mail.com"};

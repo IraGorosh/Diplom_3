@@ -1,20 +1,18 @@
 package site.nomoreparties.stellarburgers;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.html5.LocalStorage;
-import org.openqa.selenium.html5.WebStorage;
 import site.nomoreparties.stellarburgers.client.UserClient;
 import site.nomoreparties.stellarburgers.model.*;
 
 import static site.nomoreparties.stellarburgers.model.DataGenerator.getEmail;
 import static site.nomoreparties.stellarburgers.model.DataGenerator.getString;
 import static site.nomoreparties.stellarburgers.steps.UserLoginSteps.assertToGoToTheMainPageAfterLogin;
+import static site.nomoreparties.stellarburgers.steps.UserLoginSteps.deleteLoggedInUser;
+import static site.nomoreparties.stellarburgers.webDriver.driverFactory.createChromeDriver;
 
 public class UserLoginWebTest {
     private WebDriver driver;
@@ -23,9 +21,7 @@ public class UserLoginWebTest {
 
     @Before
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.http.factory", "jdk-http-client");
-        driver = new ChromeDriver();
+        driver = createChromeDriver();
         userClient = new UserClient();
         user = new User(getString(16), getEmail(), getString(16));
         userClient.create(user);
@@ -33,8 +29,7 @@ public class UserLoginWebTest {
 
     @After
     public void cleanUp() {
-        LocalStorage local = ((WebStorage) driver).getLocalStorage();
-        userClient.delete(local.getItem("accessToken"));
+        deleteLoggedInUser(driver);
         driver.quit();
     }
 

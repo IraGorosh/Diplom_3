@@ -7,7 +7,7 @@ import site.nomoreparties.stellarburgers.model.User;
 
 public class PersonalAccountSteps {
 
-    public static void getIntoPersonalAccount(WebDriver driver, User user) {
+    public static void loginAndGoToPersonalAccount(WebDriver driver, User user) {
         new LoginPage(driver)
                 .open()
                 .fillInCredentials(user.getEmail(), user.getPassword())

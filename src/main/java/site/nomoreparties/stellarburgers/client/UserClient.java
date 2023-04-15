@@ -14,7 +14,6 @@ public class UserClient {
     public void create(User user) {
          given()
                 .spec(getBaseSpec())
-                .header("Content-type", "application/json")
                 .body(user)
                 .when()
                 .post(URI + "register/")
@@ -33,7 +32,6 @@ public class UserClient {
     public ValidatableResponse login(User user) {
         return given()
                 .spec(getBaseSpec())
-                .header("Content-type", "application/json")
                 .body(user)
                 .when()
                 .post(URI + "login/")

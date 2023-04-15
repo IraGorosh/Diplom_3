@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class RegisterPage {
     private static final String PAGE_URL = "https://stellarburgers.nomoreparties.site/register";
-    private static final By REGISTER_PAGE = By.xpath(".//*[text()='Регистрация']");
+    private static final By REGISTER_PAGE_HEADER = By.xpath(".//*[text()='Регистрация']");
     private static final By NAME = By.xpath(".//fieldset[1]//input[@name='name']");
     private static final By EMAIL = By.xpath(".//fieldset[2]//input[@name='name']");
     private static final By PASSWORD = By.xpath(".//input[@name='Пароль']");
@@ -25,7 +25,7 @@ public class RegisterPage {
 
     public RegisterPage waitUntilReady() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(REGISTER_PAGE));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(REGISTER_PAGE_HEADER));
         return this;
     }
 

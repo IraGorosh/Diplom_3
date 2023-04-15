@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class LoginPage {
     private static final String PAGE_URL = "https://stellarburgers.nomoreparties.site/login";
-    private static final By LOGIN_PAGE = By.xpath(".//*[text()='Вход']");
+    private static final By LOGIN_PAGE_HEADER = By.xpath(".//*[text()='Вход']");
     private static final By REGISTER = By.xpath(".//*[text()='Зарегистрироваться']");
     private static final By EMAIL = By.xpath(".//input[@name='name']");
     private static final By PASSWORD = By.xpath(".//input[@name='Пароль']");
@@ -23,7 +23,7 @@ public class LoginPage {
 
     public LoginPage waitUntilReady() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_PAGE));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_PAGE_HEADER));
         return this;
     }
 
@@ -49,6 +49,6 @@ public class LoginPage {
     }
 
     public String returnPageName() {
-        return driver.findElement(LOGIN_PAGE).getText();
+        return driver.findElement(LOGIN_PAGE_HEADER).getText();
     }
 }

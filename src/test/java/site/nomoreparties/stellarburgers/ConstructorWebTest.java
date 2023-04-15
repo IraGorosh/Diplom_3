@@ -1,23 +1,21 @@
 package site.nomoreparties.stellarburgers;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import site.nomoreparties.stellarburgers.model.MainPage;
+
+import static site.nomoreparties.stellarburgers.webDriver.driverFactory.createChromeDriver;
 
 public class ConstructorWebTest {
     private WebDriver driver;
 
     @Before
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.http.factory", "jdk-http-client");
-        driver = new ChromeDriver();
+        driver = createChromeDriver();
     }
 
     @After

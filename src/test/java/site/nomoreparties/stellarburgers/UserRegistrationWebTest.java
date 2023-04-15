@@ -1,14 +1,11 @@
 package site.nomoreparties.stellarburgers;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import site.nomoreparties.stellarburgers.model.LoginPage;
 import site.nomoreparties.stellarburgers.model.MainPage;
 import site.nomoreparties.stellarburgers.model.RegisterPage;
@@ -16,16 +13,15 @@ import site.nomoreparties.stellarburgers.model.User;
 
 import static site.nomoreparties.stellarburgers.model.DataGenerator.getEmail;
 import static site.nomoreparties.stellarburgers.model.DataGenerator.getString;
-import static site.nomoreparties.stellarburgers.steps.UserLoginSteps.assertThatUserDeletesAfterLogin;
+import static site.nomoreparties.stellarburgers.steps.UserLoginSteps.deleteUserViaApi;
+import static site.nomoreparties.stellarburgers.webDriver.driverFactory.createChromeDriver;
 
 public class UserRegistrationWebTest {
     private WebDriver driver;
     private User user;
     @Before
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.http.factory", "jdk-http-client");
-        driver = new ChromeDriver();
+        driver = createChromeDriver();
     }
 
     @After
@@ -52,7 +48,7 @@ public class UserRegistrationWebTest {
                 .returnPageName();
         Assert.assertEquals("Не произошел переход на страницу входа", "Вход", pageName);
 
-        assertThatUserDeletesAfterLogin(user);
+        deleteUserViaApi(user);
     }
 
     @Test
