@@ -15,9 +15,7 @@ public class MainPage {
     private static final By BUNS = By.xpath("//span[text()='Булки']");
     private static final By SAUCES = By.xpath("//span[text()='Соусы']");
     private static final By FILLINGS = By.xpath("//span[text()='Начинки']");
-    private static final By SECTION_FILLINGS = By.xpath("//h2[text()='Начинки']");
-    private static final By SECTION_BUNS = By.xpath("//h2[text()='Булки']");
-    private static final By SECTION_SAUCES = By.xpath("//h2[text()='Соусы']");
+    private static final By SELECTED_SECTION_NAME = By.className("tab_tab_type_current__2BEPc");
 
     private final WebDriver driver;
 
@@ -61,16 +59,8 @@ public class MainPage {
         return this;
     }
 
-    public String returnFillingsSectionName() {
-        return driver.findElement(SECTION_FILLINGS).getText();
-    }
-
-    public String returnBunsSectionName() {
-        return driver.findElement(SECTION_BUNS).getText();
-    }
-
-    public String returnSaucesSectionName() {
-        return driver.findElement(SECTION_SAUCES).getText();
+    public String returnNameOfTheSelectedSection() {
+        return driver.findElement(SELECTED_SECTION_NAME).getText();
     }
 
     public String returnButtonPlaceAnOrderName() {

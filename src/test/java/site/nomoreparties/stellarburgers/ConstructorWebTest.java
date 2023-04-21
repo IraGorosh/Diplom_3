@@ -30,7 +30,7 @@ public class ConstructorWebTest {
                 .open()
                 .clickOnTheFillings()
                 .clickOnTheBuns()
-                .returnBunsSectionName();
+                .returnNameOfTheSelectedSection();
         Assert.assertEquals("Не произошел переход на секцию Булок", "Булки", bunsSectionName);
     }
 
@@ -40,7 +40,7 @@ public class ConstructorWebTest {
         String saucesSectionName = new MainPage(driver)
                 .open()
                 .clickOnTheSauces()
-                .returnSaucesSectionName();
+                .returnNameOfTheSelectedSection();
         Assert.assertEquals("Не произошел переход на секцию Соусов", "Соусы", saucesSectionName);
     }
 
@@ -50,7 +50,7 @@ public class ConstructorWebTest {
         String fillingsSectionName = new MainPage(driver)
                 .open()
                 .clickOnTheFillings()
-                .returnFillingsSectionName();
+                .returnNameOfTheSelectedSection();
         Assert.assertEquals("Не произошел переход на секцию Начинок", "Начинки", fillingsSectionName);
     }
 }

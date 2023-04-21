@@ -70,6 +70,6 @@ public class PersonalAccountWebTest {
         String placeAnOrderName = new MainPage(driver)
                 .waitUntilReady()
                 .returnButtonPlaceAnOrderName();
-        Assert.assertEquals(ERROR_MESSAGE, "Оформить заказ", placeAnOrderName);
+        Assert.assertEquals(NAVIGATION_TO_MAIN_PAGE_WAS_EXPECTED, "Оформить заказ", placeAnOrderName);
     }
 }
